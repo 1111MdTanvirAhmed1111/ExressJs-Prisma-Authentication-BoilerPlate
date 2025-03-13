@@ -8,31 +8,36 @@ datasource db {
 }
 
 model User {
-  id            Int       @id @default(autoincrement())
-  email         String    @unique
-  password      String
-  name          String?
-  images        Image[]
-  sentMessages  Message[] @relation("SentMessages")
-  receivedMessages Message[] @relation("ReceivedMessages")
-  createdAt     DateTime  @default(now())
+  id        String    @id @default(cuid())
+  email     String    @unique
+  password  String
+  name      String?
+  images    Image[]
+  createdAt DateTime  @default(now())
 }
 
 model Image {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(cuid())
   filename  String
   path      String
-  userId    Int
+  userId    String   // Changed to String to match User's id type
   user      User     @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
 }
 
+model MessageSession {
+  id         String    @id @default(cuid())
+  senderId   String    // Changed to String to match User's id type
+  receiverId String    // Changed to String to match User's id type
+  createdAt  DateTime  @default(now())
+  messages   Message[]
+}
+
 model Message {
-  id         Int      @id @default(autoincrement())
-  content    String
-  senderId   Int
-  receiverId Int
-  sender     User     @relation("SentMessages", fields: [senderId], references: [id])
-  receiver   User     @relation("ReceivedMessages", fields: [receiverId], references: [id])
-  createdAt  DateTime @default(now())
+  id          String        @id @default(cuid())
+  content     String
+  messagerId  String        // Changed to String to match MessageSession's sender/receiver id types
+  sessionId   String
+  session     MessageSession @relation(fields: [sessionId], references: [id])
+  createdAt   DateTime      @default(now())
 }

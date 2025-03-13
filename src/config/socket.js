@@ -29,76 +29,81 @@ function initializeSocket(server) {
 
     // Handle sending messages using database userIds
     socket.on('sendMessage', async (data) => {
-      const { from, to, content } = data;
-
+      const { senderId, receiverId, content } = data;
+console.log(data)
       try {
         // Validate inputs
-        const parsedFrom = parseInt(from);
-        const parsedTo = parseInt(to);
-        if (isNaN(parsedFrom) || isNaN(parsedTo) || parsedFrom <= 0 || parsedTo <= 0) {
+        const parsedSenderId = parseInt(senderId);
+        const parsedReceiverId = parseInt(receiverId);
+        if (isNaN(parsedSenderId) || isNaN(parsedReceiverId) || parsedSenderId <= 0 || parsedReceiverId <= 0) {
           throw new Error('Sender ID and Receiver ID must be positive integers');
         }
         if (!content || typeof content !== 'string' || content.trim() === '') {
           throw new Error('Message content is required and must be a non-empty string');
         }
 
-        // Find or create a chat between 'from' and 'to'
-        let chatting = await prisma.chatting.findFirst({
+
+
+
+        // Find or create a chat between 'senderId' and 'receiverId'
+        let message = await prisma.messageSession.findFirst({
           where: {
             OR: [
-              { from: parsedFrom, to: parsedTo },
-              { from: parsedTo, to: parsedFrom },
+              { senderId: parsedSenderId, receiverId: parsedReceiverId },
+              { senderId: parsedReceiverId, receiverId: parsedSenderId },
             ],
-          },
-          include: { messages: true },
+          }
         });
 
-        if (!chatting) {
+        
+
+        if (!message) {
           // Create new chat if it doesn’t exist
-          chatting = await prisma.chatting.create({
+          message = await prisma.messageSession.create({
             data: {
-              from: parsedFrom,
-              to: parsedTo,
+              senderId: parsedSenderId,
+              receiverId: parsedReceiverId,
               messages: {
-                create: { messager: parsedFrom, content: content.trim() },
+                create: {messagerId: parsedSenderId, content: content.trim() },
               },
             },
-            include: { messages: true },
           });
         } else {
           // Add new message to existing chat
           await prisma.message.create({
+         
             data: {
-              messager: parsedFrom,
+              messagerId: parsedSenderId,
+              session: message.id,
               content: content.trim(),
-              chattingId: chatting.id,
             },
+          
           });
           // Fetch updated chat with messages
-          chatting = await prisma.chatting.findUnique({
-            where: { id: chatting.id },
+          message = await prisma.messageSession.findUnique({
+            where: { id: message.id },
             include: { messages: true },
           });
         }
 
         // Emit to sender if online
-        if (users[parsedFrom]) {
-          io.to(users[parsedFrom]).emit('receivedMessage', {
-            from: parsedFrom,
-            to: parsedTo,
+        if (users[parsedSenderId]) {
+          io.to(users[parsedSenderId]).emit('receivedMessage', {
+            senderId: parsedSenderId,
+            receiverId: parsedReceiverId,
             content: content.trim(),
           });
-          console.log(`Message sent to sender ${parsedFrom} at socket ${users[parsedFrom]}`);
+          console.log(`Message sent to sender ${parsedSenderId} at socket ${users[parsedSenderId]}`);
         }
 
         // Emit to receiver if online
-        if (users[parsedTo]) {
-          io.to(users[parsedTo]).emit('receivedMessage', {
-            from: parsedFrom,
-            to: parsedTo,
+        if (users[parsedReceiverId]) {
+          io.to(users[parsedReceiverId]).emit('receivedMessage', {
+            senderId: parsedSenderId,
+            receiverId: parsedReceiverId,
             content: content.trim(),
           });
-          console.log(`Message sent to receiver ${parsedTo} at socket ${users[parsedTo]}`);
+          console.log(`Message sent to receiver ${parsedReceiverId} at socket ${users[parsedReceiverId]}`);
         }
 
       } catch (error) {

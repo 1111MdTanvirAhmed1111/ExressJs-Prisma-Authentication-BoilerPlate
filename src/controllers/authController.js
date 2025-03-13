@@ -5,6 +5,7 @@ const prisma = require('@/config/database'); // Updated
 const register = async (req, res, next) => {
   try {
     const { email, password, name } = req.body;
+    console.log(req.body)
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await prisma.user.create({
@@ -14,6 +15,7 @@ const register = async (req, res, next) => {
         name,
       },
     });
+    console.log(user)
 
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
 
