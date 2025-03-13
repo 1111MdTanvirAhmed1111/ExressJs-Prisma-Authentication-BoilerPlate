@@ -158,7 +158,7 @@ json
 
  
 
-Copy
+```bash
 {
     "status": "success",
     "data": {
@@ -177,7 +177,7 @@ json
 
  
 
-Copy
+```bash
 {
     "status": "success",
     "data": {
@@ -198,7 +198,7 @@ json
 
  
 
-Copy
+```bash
 {
     "status": "success",
     "data": [
@@ -215,7 +215,7 @@ json
 
  
 
-Copy
+```bash
 {
     "status": "success",
     "data": [
@@ -231,7 +231,7 @@ json
 
  
 
-Copy
+```bash
 {
     "status": "success",
     "message": "File deleted successfully"
@@ -246,7 +246,7 @@ json
 
  
 
-Copy
+```bash
 {
     "status": "success",
     "data": [
@@ -270,7 +270,7 @@ json
 
  
 
-Copy
+```bash
 {
     "receiverId": 2,
     "content": "Hello there!"
@@ -282,7 +282,7 @@ json
 
  
 
-Copy
+```bash
 {
     "status": "success",
     "data": {
@@ -301,7 +301,7 @@ json
 
  
 
-Copy
+```bash
 {
     "status": "error",
     "message": "Route GET /api/unknown not found"
@@ -313,7 +313,7 @@ json
 
  
 
-Copy
+```bash
 {
     "status": "error",
     "message": "Internal Server Error"
@@ -327,7 +327,7 @@ javascript
 
  
 
-Copy
+```bash
 const socket = io('http://localhost:3000');
 
 // Join your room
@@ -351,7 +351,7 @@ javascript
 
  
 
-Copy
+```bash
 const prisma = require('@/config/database');
 const { getUserMessages } = require('@/controllers/messageController');
 Enabled via module-alias and jsconfig.json for seamless IDE support.
@@ -366,7 +366,7 @@ bash
 
  
 
-Copy
+```bash
 npm run lint
 Run npm run lint:fix to auto-fix problems:
 bash
@@ -375,7 +375,7 @@ bash
 
  
 
-Copy
+```bash
 npm run lint:fix
 Rules include single quotes, semicolons, and Prettier formatting for consistency.
 
@@ -390,7 +390,7 @@ bash
 
  
 
-Copy
+```bash
 git checkout -b feature/awesome-idea
 Commit your changes:
 bash
@@ -399,7 +399,7 @@ bash
 
  
 
-Copy
+```bash
 git commit -m "Add awesome idea"
 Push to the branch:
 bash
@@ -408,7 +408,7 @@ bash
 
  
 
-Copy
+```bash
 git push origin feature/awesome-idea
 Open a Pull Request!
 📜 License
