@@ -32,7 +32,7 @@ This is a **production-ready**, **modern**, and **developer-friendly** Express.j
 
 ## 🖼 Preview
 
-*Add a screenshot or GIF of your app in action here!*
+![Example Image]([api-triangle-letter-logo-design-shape-monogram-vector-template-red-color-triangular-simple-elegant-luxurious-270084927.jpg](https://thumbs.dreamstime.com/b/api-triangle-letter-logo-design-shape-monogram-vector-template-red-color-triangular-simple-elegant-luxurious-270084927.jpg))
 
 ---
 
