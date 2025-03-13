@@ -6,7 +6,7 @@ const initializeSocket = require('@/config/socket'); // Updated
 const authRoutes = require('@/routes/authRoutes'); // Updated
 const fileRoutes = require('@/routes/fileRoutes'); // Updated
 const messageRoutes = require('@/routes/messageRoutes'); // Updated
-const { errorHandler, notFoundHandler } = require('@/middleware/errorMiddleware'); // Updated
+const { errorHandler, notFoundHandler } = require('@/utils/errorHandler'); // Updated
 
 const app = express();
 const server = http.createServer(app);
