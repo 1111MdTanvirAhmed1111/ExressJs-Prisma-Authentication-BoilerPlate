@@ -166,6 +166,7 @@ json
         "token": "jwt-token-here"
     }
 }
+```
 Files (Authenticated)
 POST /api/files/upload/single
 Upload a single file.
@@ -188,6 +189,7 @@ json
         "createdAt": "2025-03-13T00:00:00.000Z"
     }
 }
+```
 POST /api/files/upload/multiple
 Upload multiple files.
 Request: Form-data with key images[].
@@ -206,6 +208,7 @@ json
         { "id": 2, "filename": "456-file2.jpg", "path": "src/uploads/456-file2.jpg", "userId": 1, "createdAt": "2025-03-13T00:00:00.000Z" }
     ]
 }
+```
 GET /api/files
 Get all files for the authenticated user.
 Response (200):
@@ -222,6 +225,7 @@ json
         { "id": 1, "filename": "123-file1.jpg", "path": "src/uploads/123-file1.jpg", "userId": 1, "createdAt": "2025-03-13T00:00:00.000Z" }
     ]
 }
+```
 DELETE /api/files/:id
 Delete a file by ID.
 Response (200):
@@ -236,6 +240,7 @@ json
     "status": "success",
     "message": "File deleted successfully"
 }
+```
 Messaging (Authenticated)
 GET /api/messages
 Get all messages where the user is sender or receiver.
@@ -261,6 +266,7 @@ json
         }
     ]
 }
+```
 POST /api/messages/send
 Send a message (also triggers Socket.IO).
 Request Body:
@@ -275,6 +281,7 @@ json
     "receiverId": 2,
     "content": "Hello there!"
 }
+```
 Response (201):
 json
 
@@ -293,6 +300,7 @@ json
         "createdAt": "2025-03-13T00:00:00.000Z"
     }
 }
+```
 Error Responses
 404 Not Found:
 json
@@ -306,6 +314,7 @@ json
     "status": "error",
     "message": "Route GET /api/unknown not found"
 }
+```
 500 Internal Server Error:
 json
 
@@ -318,6 +327,7 @@ json
     "status": "error",
     "message": "Internal Server Error"
 }
+```
 💬 Real-Time Messaging with Socket.IO
 Enable real-time communication between users:
 
@@ -329,7 +339,7 @@ javascript
 
 ```bash
 const socket = io('http://localhost:3000');
-
+```
 // Join your room
 socket.emit('join', userId);
 
@@ -355,7 +365,7 @@ javascript
 const prisma = require('@/config/database');
 const { getUserMessages } = require('@/controllers/messageController');
 Enabled via module-alias and jsconfig.json for seamless IDE support.
-
+```
 ✅ Code Quality with ESLint
 Linting is set up with a Next.js-inspired configuration:
 
@@ -370,13 +380,14 @@ bash
 npm run lint
 Run npm run lint:fix to auto-fix problems:
 bash
-
+```
   
 
  
 
 ```bash
 npm run lint:fix
+```
 Rules include single quotes, semicolons, and Prettier formatting for consistency.
 
 🤝 Contributing
@@ -394,7 +405,7 @@ bash
 git checkout -b feature/awesome-idea
 Commit your changes:
 bash
-
+```
   
 
  
@@ -403,13 +414,14 @@ bash
 git commit -m "Add awesome idea"
 Push to the branch:
 bash
-
+```
   
 
  
 
 ```bash
 git push origin feature/awesome-idea
+```
 Open a Pull Request!
 📜 License
 This project is licensed under the MIT License - see the LICENSE file for details.
