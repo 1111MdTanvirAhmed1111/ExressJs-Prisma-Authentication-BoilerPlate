@@ -83,7 +83,7 @@ PORT=3000
  ```
 📂 Project Structure
 Here’s how the project is organized for clarity and scalability:
-
+ ```bash
 express-prisma-app/
 ├── src/
 │   ├── config/          # Database and Socket.IO setup
@@ -116,7 +116,7 @@ express-prisma-app/
 ├── jsconfig.json        # Custom import aliases
 └── package.json         # Dependencies and scripts
 
-
+```
 🌐 API Documentation
 Detailed endpoints for interacting with the API:
 
