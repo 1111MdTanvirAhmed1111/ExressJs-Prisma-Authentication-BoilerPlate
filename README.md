@@ -70,14 +70,17 @@ Get up and running in minutes!
    ```bash
    git clone https://github.com/your-username/express-prisma-app.git
    cd express-prisma-app
+   ```
 2.Install dependencies
  ```bash
+  npm install
+```
 3.Set up environment variables: Create a .env file in the root directory and add:
  ```bash
 DATABASE_URL="postgresql://user:password@localhost:5432/dbname?schema=public"
 JWT_SECRET="your-secret-key"
 PORT=3000
-
+ ```
 📂 Project Structure
 Here’s how the project is organized for clarity and scalability:
 
@@ -122,25 +125,15 @@ POST /api/auth/register
 Register a new user.
 Request Body:
 json
-
-Collapse
-
-Wrap
-
-Copy
+ ```bash
 {
     "email": "user@example.com",
     "password": "password123",
     "name": "John Doe"
 }
+```
 Response (201):
 json
-
-Collapse
-
-Wrap
-
-Copy
 {
     "status": "success",
     "data": {
@@ -152,16 +145,12 @@ POST /api/auth/login
 Login and receive a JWT.
 Request Body:
 json
-
-Collapse
-
-Wrap
-
-Copy
+ ```bash
 {
     "email": "user@example.com",
     "password": "password123"
 }
+```
 Response (200):
 json
 
