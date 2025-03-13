@@ -3,13 +3,13 @@ const errorHandler = (err, req, res, next) => {
   
   if (err instanceof multer.MulterError) {
     return res.status(400).json({
-      status: 'error',
+      status: 400,
       message: err.message
     });
   }
 
   res.status(err.status || 500).json({
-    status: 'error',
+    status: err.status,
     message: err.message || 'Internal Server Error',
     ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
   });
@@ -17,7 +17,7 @@ const errorHandler = (err, req, res, next) => {
 
 const notFoundHandler = (req, res, next) => {
   res.status(404).json({
-    status: 'error',
+    status: 404,
     message: `Route ${req.method} ${req.url} not found`
   });
 };
