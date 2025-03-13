@@ -154,9 +154,9 @@ json
 Response (200):
 json
 
-Collapse
+  
 
-Wrap
+ 
 
 Copy
 {
@@ -173,9 +173,9 @@ Request: Form-data with key image.
 Response (201):
 json
 
-Collapse
+  
 
-Wrap
+ 
 
 Copy
 {
@@ -194,9 +194,9 @@ Request: Form-data with key images[].
 Response (201):
 json
 
-Collapse
+  
 
-Wrap
+ 
 
 Copy
 {
@@ -211,9 +211,9 @@ Get all files for the authenticated user.
 Response (200):
 json
 
-Collapse
+  
 
-Wrap
+ 
 
 Copy
 {
@@ -227,9 +227,9 @@ Delete a file by ID.
 Response (200):
 json
 
-Collapse
+  
 
-Wrap
+ 
 
 Copy
 {
@@ -242,9 +242,9 @@ Get all messages where the user is sender or receiver.
 Response (200):
 json
 
-Collapse
+  
 
-Wrap
+ 
 
 Copy
 {
@@ -266,9 +266,9 @@ Send a message (also triggers Socket.IO).
 Request Body:
 json
 
-Collapse
+  
 
-Wrap
+ 
 
 Copy
 {
@@ -278,9 +278,9 @@ Copy
 Response (201):
 json
 
-Collapse
+  
 
-Wrap
+ 
 
 Copy
 {
@@ -297,9 +297,9 @@ Error Responses
 404 Not Found:
 json
 
-Collapse
+  
 
-Wrap
+ 
 
 Copy
 {
@@ -309,9 +309,9 @@ Copy
 500 Internal Server Error:
 json
 
-Collapse
+  
 
-Wrap
+ 
 
 Copy
 {
@@ -323,9 +323,9 @@ Enable real-time communication between users:
 
 javascript
 
-Collapse
+  
 
-Wrap
+ 
 
 Copy
 const socket = io('http://localhost:3000');
@@ -347,9 +347,9 @@ Enjoy Next.js-style imports with the @/ prefix:
 
 javascript
 
-Collapse
+  
 
-Wrap
+ 
 
 Copy
 const prisma = require('@/config/database');
@@ -362,18 +362,18 @@ Linting is set up with a Next.js-inspired configuration:
 Run npm run lint to check for issues:
 bash
 
-Collapse
+  
 
-Wrap
+ 
 
 Copy
 npm run lint
 Run npm run lint:fix to auto-fix problems:
 bash
 
-Collapse
+  
 
-Wrap
+ 
 
 Copy
 npm run lint:fix
@@ -386,27 +386,27 @@ Fork the repository.
 Create a feature branch:
 bash
 
-Collapse
+  
 
-Wrap
+ 
 
 Copy
 git checkout -b feature/awesome-idea
 Commit your changes:
 bash
 
-Collapse
+  
 
-Wrap
+ 
 
 Copy
 git commit -m "Add awesome idea"
 Push to the branch:
 bash
 
-Collapse
+  
 
-Wrap
+ 
 
 Copy
 git push origin feature/awesome-idea
